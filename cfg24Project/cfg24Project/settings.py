@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,8 @@ SECRET_KEY = 'django-insecure-5!-*%v=*eps))vq$6$^i2e2t1s8@)d(pf_w&7p)#7d9*j3p_h8
 DEBUG = True
 
 ALLOWED_HOSTS = []
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Application definition
@@ -131,3 +134,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend', 'build', 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+TWILIO_ACCOUNT_SID = env("MY_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = env("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = env("MY_TWILIO_NUMBER")
+SMS_BROADCAST_TO_NUMBERS = [
+   "+917009853177",
+   "+919063263955",
+   "+919392592678"
+ ]
