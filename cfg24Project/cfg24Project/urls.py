@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cfg24App.views import front ,note, note_detail
+from cfg24App.views import front ,note, note_detail, Farmer
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,7 @@ urlpatterns = [
     path("notes/", note, name="note"),
     path("notes/<int:pk>/", note_detail, name="detail"),
     path("", include('cfg24App.urls')),
+    path('farmer/', Farmer, name='farmers_list'),
     path('api/', include('cfg24App.urls')),
 ]
+# urls.py
