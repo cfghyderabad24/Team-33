@@ -109,3 +109,14 @@ def create_record(request):
 
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+
+@api_view(['GET'])
+def get_all_farmers(request):
+    try:
+        farmers = Farmers.objects.all()
+        farmers_list = list(farmers.values())
+        return JsonResponse(farmers_list, safe=False, status=200)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
+    
