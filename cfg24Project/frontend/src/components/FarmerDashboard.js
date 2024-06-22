@@ -50,8 +50,8 @@ function FarmerDashboard() {
         </Carousel.Item>
         <Carousel.Item>
         <Carousel.Caption style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Every Seed Counts</h3>
+            <p>Growing Green, Feeding the world</p>
           </Carousel.Caption>
           <img
             className="d-block mx-auto w-100"
@@ -98,10 +98,10 @@ function FarmerDashboard() {
 
         <Row className='mt-5'>
           <Col md={4}>
-            <Card onClick={() => navigateTo('/crop-prediction')} style={{ cursor: 'pointer' }}>
+            <Card onClick={() => navigateTo('/query')} style={{ cursor: 'pointer' }}>
               <Card.Img variant="top" src={carousel1} />
               <Card.Body>
-                <Card.Title><HiOutlineQuestionMarkCircle /> Crop Prediction</Card.Title>
+                <Card.Title><HiOutlineQuestionMarkCircle /> Queries</Card.Title>
                 
               </Card.Body>
             </Card>
@@ -122,7 +122,7 @@ function FarmerDashboard() {
           
 
           <Col md={4}>
-            <Card onClick={() => navigateTo('/notifications')} style={{ cursor: 'pointer' }}>
+            <Card onClick={() => navigateTo('/msp')} style={{ cursor: 'pointer' }}>
               <Card.Img variant="top" src={carousel1} />
               <Card.Body>
                 <Card.Title><SiBitcoinsv /> MSP</Card.Title>

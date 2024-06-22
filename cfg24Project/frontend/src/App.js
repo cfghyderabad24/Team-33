@@ -15,6 +15,7 @@ import AddFarmer from './components/addFarmer/AddFarmer';
 import WeatherApp from './components/weather/WeatherApp'
 import Schemes from './components/schemes/Schemes';
 import Footer from './components/Footer';
+import Query from './components/Query';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='/weather' element={<WeatherApp/>}/>
           <Route path='/schemes' element={<Schemes/>}/>
           <Route path='/report' element={<Report/>}/>
+          <Route path='/query' element={<Query/>}/>
           <Route path='/admin' element={<Admin/>}>
             <Route path='all-farmers' element={<AllFarmers/>}/>
             <Route path='add-farmer' element={<AddFarmer/>}/>
