@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Notify = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +17,17 @@ const Notify = () => {
     });
   };
 
+  
   const handleSubmit = (e) => {
+    console.log(formData)
     e.preventDefault();
-    console.log('Form data submitted:', formData);
-    // Add your form submission logic here
+    axios.post('http://localhost:8000/api/submit/', formData)
+      .then(response => {
+        console.log('Data submitted successfully', response.data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
   };
 
   return (
