@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { TbBoxMargin } from 'react-icons/tb';
 
-function Availability() {
+function Availabilityf() {
   const facilities = [
     {
       title: 'Pesticides',
@@ -36,11 +37,12 @@ function Availability() {
   ];
 
   const containerStyle = {
-    fontFamily: "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif",
     backgroundImage: "url('https://img.freepik.com/free-photo/beautiful-terraced-rice-field-water-season-top-view-rices-paddy-fieldthailand-generative-ai_1258-153055.jpg')",
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundAttachment: 'fixed'
+    backgroundAttachment: 'fixed',
+    margin : '0px',
+    padding:'0px'
   };
 
   const cardStyle = {
@@ -59,7 +61,7 @@ function Availability() {
   };
 
   return (
-    <div className="container my-5" style={containerStyle}>
+    <div className=" my-5" style={containerStyle}>
       <div className="row text-center mb-5">
         <div className="col">
           <h1 className="fs-1" style={headerStyle}>Various Facilities</h1>
@@ -74,7 +76,8 @@ function Availability() {
               </div>
               <div className="card-body">
                 <h4 className="card-title text-success">{facility.title}</h4>
-                </div>
+                <button type="button" className="btn btn-success" onClick={() => window.location.href = facility.link}>Buy now</button>
+              </div>
             </div>
           </div>
         ))}
@@ -83,4 +86,4 @@ function Availability() {
   );
 }
 
-export default Availability;
+export default Availabilityf;

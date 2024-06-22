@@ -45,7 +45,7 @@ function Header() {
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey="4" as={NavLink} to="/aboutus">
+                    <Nav.Link eventKey="3" as={NavLink} to="/">
                       About us
                     </Nav.Link>
                   </Nav.Item>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './SignUpForm1.css';
 
 function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -11,6 +10,7 @@ function SignUpForm() {
     area: '',
     cropType: '',
     agreeToTerms: false,
+    userType: '',
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -70,15 +70,78 @@ function SignUpForm() {
     e.preventDefault();
     if (validateForm()) {
       console.log('Form submitted:', formData);
-      alert("Form Submitted");
+      alert('Form Submitted');
     }
   };
 
+  const styles = {
+    container: {
+      maxWidth: '600px',
+      margin: 'auto',
+      padding: '20px',
+      borderRadius: '8px',
+      backgroundColor: '#f5f5f5',
+      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    input: {
+      padding: '10px',
+      margin: '10px 0',
+      borderRadius: '4px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    select: {
+      padding: '10px',
+      margin: '10px 0',
+      borderRadius: '4px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    label: {
+      margin: '10px 0 5px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+    },
+    error: {
+      color: 'red',
+      fontSize: '14px',
+    },
+    checkboxContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      margin: '10px 0',
+    },
+    submitButton: {
+      padding: '10px',
+      margin: '20px 0',
+      borderRadius: '4px',
+      border: 'none',
+      backgroundColor: '#28a745',
+      color: 'white',
+      fontSize: '18px',
+      cursor: 'pointer',
+    },
+    title: {
+      textAlign: 'center',
+      marginBottom: '20px',
+      color: '#333',
+    },
+    radioGroup: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      margin: '10px 0',
+    },
+  };
+
   return (
-    <div className='form-container'>
-      <h1>Sign Up</h1>
-      <form className='form' onSubmit={handleSubmit}>
-      <div className="radio-group">
+    <div style={styles.container}>
+      <h1 style={styles.title}>Sign Up</h1>
+      <form style={styles.form} onSubmit={handleSubmit}>
+        <div style={styles.radioGroup}>
           <label>
             <input
               type="radio"
@@ -100,99 +163,96 @@ function SignUpForm() {
             Admin
           </label>
         </div>
-      <label htmlFor="User type">UserName:</label>
-      
-        
+        <label style={styles.label} htmlFor="username">UserName:</label>
         <input
           type="text"
           name="username"
-          placeholder="Enter Name...."
-          className="input"
+          placeholder="Enter Name..."
+          style={styles.input}
           value={formData.username}
           onChange={handleInputChange}
         />
-        {formErrors.username && <span className="error">{formErrors.username}</span>}
-        
-        <label>Contact no:</label>
+        {formErrors.username && <span style={styles.error}>{formErrors.username}</span>}
+
+        <label style={styles.label} htmlFor="phoneNumber">Contact No:</label>
         <input
           type="tel"
           name="phoneNumber"
-
-          placeholder="Enter Phone Number...."
-          className="input"
+          placeholder="Enter Phone Number..."
+          style={styles.input}
           value={formData.phoneNumber}
           onChange={handleInputChange}
         />
-        {formErrors.phoneNumber && <span className="error">{formErrors.phoneNumber}</span>}
-        
-        <label>Email:</label>
+        {formErrors.phoneNumber && <span style={styles.error}>{formErrors.phoneNumber}</span>}
+
+        <label style={styles.label} htmlFor="emailaddress">Email:</label>
         <input
           type="text"
           name="emailaddress"
-          placeholder="Enter Email...."
-          className="input"
+          placeholder="Enter Email..."
+          style={styles.input}
           value={formData.emailaddress}
           onChange={handleInputChange}
         />
-        {formErrors.emailaddress && <span className="error">{formErrors.emailaddress}</span>}
-        
-        <label>Aadhar Number:</label>
+        {formErrors.emailaddress && <span style={styles.error}>{formErrors.emailaddress}</span>}
+
+        <label style={styles.label} htmlFor="aadharNumber">Aadhar Number:</label>
         <input
           type="text"
           name="aadharNumber"
-          placeholder="Enter Aadhar Number...."
-          className="input"
+          placeholder="Enter Aadhar Number..."
+          style={styles.input}
           value={formData.aadharNumber}
           onChange={handleInputChange}
         />
-        {formErrors.aadharNumber && <span className="error">{formErrors.aadharNumber}</span>}
-        
-        <label>Pincode:</label>
+        {formErrors.aadharNumber && <span style={styles.error}>{formErrors.aadharNumber}</span>}
+
+        <label style={styles.label} htmlFor="pincode">Pincode:</label>
         <input
           type="text"
           name="pincode"
-          placeholder="Enter Pincode...."
-          className="input"
+          placeholder="Enter Pincode..."
+          style={styles.input}
           value={formData.pincode}
           onChange={handleInputChange}
         />
-        {formErrors.pincode && <span className="error">{formErrors.pincode}</span>}
-        
-        <label>Area:</label>
+        {formErrors.pincode && <span style={styles.error}>{formErrors.pincode}</span>}
+
+        <label style={styles.label} htmlFor="area">Area:</label>
         <input
           type="text"
           name="area"
-          placeholder="Enter Area...."
-          className="input"
+          placeholder="Enter Area..."
+          style={styles.input}
           value={formData.area}
           onChange={handleInputChange}
         />
-        {formErrors.area && <span className="error">{formErrors.area}</span>}
-        
-        <label>Crop Type:</label>
+        {formErrors.area && <span style={styles.error}>{formErrors.area}</span>}
+
+        <label style={styles.label} htmlFor="cropType">Crop Type:</label>
         <input
           type="text"
           name="cropType"
-          placeholder="Enter Crop Type"
-          className="input"
+          placeholder="Enter Crop Type..."
+          style={styles.input}
           value={formData.cropType}
           onChange={handleInputChange}
         />
-        {formErrors.cropType && <span className="error">{formErrors.cropType}</span>}
-        
-        <div className='marketing'>
+        {formErrors.cropType && <span style={styles.error}>{formErrors.cropType}</span>}
+
+        <div style={styles.checkboxContainer}>
           <input
-            id="allowEmail"
+            id="agreeToTerms"
             type="checkbox"
             name="agreeToTerms"
             checked={formData.agreeToTerms}
             onChange={handleInputChange}
           />
-          <label htmlFor="allowEmail">Agree to the Terms and Conditions</label>
+          <label htmlFor="agreeToTerms" style={{ marginLeft: '8px' }}>Agree to the Terms and Conditions</label>
         </div>
-        {formErrors.agreeToTerms && <span className="error">{formErrors.agreeToTerms}</span>}
-        
-        <button className='submit' type="submit">
+        {formErrors.agreeToTerms && <span style={styles.error}>{formErrors.agreeToTerms}</span>}
+
+        <button style={styles.submitButton} type="submit">
           Sign Up
         </button>
       </form>

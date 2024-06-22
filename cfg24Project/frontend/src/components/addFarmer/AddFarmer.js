@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './AddFarmer.css';
 
 function AddFarmer() {
   const [formData, setFormData] = useState({
@@ -28,8 +27,6 @@ function AddFarmer() {
 
   const validateForm = () => {
     const errors = {};
-
-  
 
     if (!formData.farmersname) {
       errors.farmersname = "Farmer's name is required";
@@ -97,151 +94,208 @@ function AddFarmer() {
     }
   };
 
+  const styles = {
+    container: {
+      maxWidth: '600px',
+      margin: 'auto',
+      padding: '20px',
+      borderRadius: '8px',
+      backgroundColor: '#f5f5f5',
+      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    input: {
+      padding: '10px',
+      margin: '10px 0',
+      borderRadius: '4px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    select: {
+      padding: '10px',
+      margin: '10px 0',
+      borderRadius: '4px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    label: {
+      margin: '10px 0 5px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+    },
+    error: {
+      color: 'red',
+      fontSize: '14px',
+    },
+    checkboxContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      margin: '10px 0',
+    },
+    submitButton: {
+      padding: '10px',
+      margin: '20px 0',
+      borderRadius: '4px',
+      border: 'none',
+      backgroundColor: '#28a745',
+      color: 'white',
+      fontSize: '18px',
+      cursor: 'pointer',
+    },
+    title: {
+      textAlign: 'center',
+      marginBottom: '20px',
+      color: '#333',
+    },
+  };
+
   return (
-    <div className='form-container mt-5 ' >
-      <h1>Add Farmer</h1>
-      <form className='form' onSubmit={handleSubmit}>
-        
-        <label htmlFor="farmersname">Farmer's Name:</label>
+    <div style={styles.container}>
+      <h1 style={styles.title}>Add Farmer</h1>
+      <form style={styles.form} onSubmit={handleSubmit}>
+        <label style={styles.label} htmlFor="farmersname">Farmer's Name:</label>
         <input
           type="text"
           name="farmersname"
           placeholder="Enter Farmer's Name..."
-          className="input"
+          style={styles.input}
           value={formData.farmersname}
           onChange={handleInputChange}
         />
-        {formErrors.farmersname && <span className="error">{formErrors.farmersname}</span>}
+        {formErrors.farmersname && <span style={styles.error}>{formErrors.farmersname}</span>}
 
-        <label htmlFor="contactNumber">Contact No:</label>
+        <label style={styles.label} htmlFor="contactNumber">Contact No:</label>
         <input
           type="tel"
           name="contactNumber"
           placeholder="Enter Phone Number..."
-          className="input"
+          style={styles.input}
           value={formData.contactNumber}
           onChange={handleInputChange}
         />
-        {formErrors.contactNumber && <span className="error">{formErrors.contactNumber}</span>}
+        {formErrors.contactNumber && <span style={styles.error}>{formErrors.contactNumber}</span>}
 
-        <label htmlFor="aadharNumber">Aadhar Number:</label>
+        <label style={styles.label} htmlFor="aadharNumber">Aadhar Number:</label>
         <input
           type="text"
           name="aadharNumber"
           placeholder="Enter Aadhar Number..."
-          className="input"
+          style={styles.input}
           value={formData.aadharNumber}
           onChange={handleInputChange}
         />
-        {formErrors.aadharNumber && <span className="error">{formErrors.aadharNumber}</span>}
+        {formErrors.aadharNumber && <span style={styles.error}>{formErrors.aadharNumber}</span>}
 
-        <label htmlFor="pincode">Pincode:</label>
+        <label style={styles.label} htmlFor="pincode">Pincode:</label>
         <input
           type="text"
           name="pincode"
           placeholder="Enter Pincode..."
-          className="input"
+          style={styles.input}
           value={formData.pincode}
           onChange={handleInputChange}
         />
-        {formErrors.pincode && <span className="error">{formErrors.pincode}</span>}
+        {formErrors.pincode && <span style={styles.error}>{formErrors.pincode}</span>}
 
-        <label htmlFor="age">Age:</label>
+        <label style={styles.label} htmlFor="age">Age:</label>
         <input
           type="number"
           name="age"
           placeholder="Enter Age..."
-          className="input"
+          style={styles.input}
           value={formData.age}
           onChange={handleInputChange}
         />
-        {formErrors.age && <span className="error">{formErrors.age}</span>}
+        {formErrors.age && <span style={styles.error}>{formErrors.age}</span>}
 
-        <label htmlFor="emailaddress">Email Address:</label>
+        <label style={styles.label} htmlFor="emailaddress">Email Address:</label>
         <input
           type="email"
           name="emailaddress"
           placeholder="Enter Email Address..."
-          className="input"
+          style={styles.input}
           value={formData.emailaddress}
           onChange={handleInputChange}
         />
-        {formErrors.emailaddress && <span className="error">{formErrors.emailaddress}</span>}
+        {formErrors.emailaddress && <span style={styles.error}>{formErrors.emailaddress}</span>}
 
-        <label htmlFor="areaploughed">Area Ploughed:</label>
+        <label style={styles.label} htmlFor="areaploughed">Area Ploughed:</label>
         <input
           type="text"
           name="areaploughed"
           placeholder="Enter Area Ploughed..."
-          className="input"
+          style={styles.input}
           value={formData.areaploughed}
           onChange={handleInputChange}
         />
-        {formErrors.areaploughed && <span className="error">{formErrors.areaploughed}</span>}
+        {formErrors.areaploughed && <span style={styles.error}>{formErrors.areaploughed}</span>}
 
-        <label htmlFor="season">Season:</label>
+        <label style={styles.label} htmlFor="season">Season:</label>
         <select
           name="season"
           value={formData.season}
           onChange={handleInputChange}
-          className="input"
+          style={styles.select}
         >
           <option value="">Select Season</option>
           <option value="Kharif">Summer</option>
           <option value="Rabi">Winter</option>
           <option value="Zaid">Rainy</option>
         </select>
-        {formErrors.season && <span className="error">{formErrors.season}</span>}
+        {formErrors.season && <span style={styles.error}>{formErrors.season}</span>}
 
-        <label htmlFor="cropGrown">Crop Grown:</label>
+        <label style={styles.label} htmlFor="cropGrown">Crop Grown:</label>
         <select
           name="cropGrown"
           value={formData.cropGrown}
           onChange={handleInputChange}
-          className="input"
+          style={styles.select}
         >
           <option value="">Select Crop</option>
           <option value="Wheat">Wheat</option>
           <option value="Rice">Rice</option>
           <option value="Maize">Maize</option>
         </select>
-        {formErrors.cropGrown && <span className="error">{formErrors.cropGrown}</span>}
+        {formErrors.cropGrown && <span style={styles.error}>{formErrors.cropGrown}</span>}
 
-        <label htmlFor="seedUsed">Seed Used:</label>
+        <label style={styles.label} htmlFor="seedUsed">Seed Used:</label>
         <input
           type="text"
           name="seedUsed"
           placeholder="Enter Seed Used..."
-          className="input"
+          style={styles.input}
           value={formData.seedUsed}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="dateofseedsown">Date of Seed Sown:</label>
+        <label style={styles.label} htmlFor="dateofseedsown">Date of Seed Sown:</label>
         <input
           type="date"
           name="dateofseedsown"
-          className="input"
+          style={styles.input}
           value={formData.dateofseedsown}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="transplanting">Transplanting:</label>
+        <label style={styles.label} htmlFor="transplanting">Transplanting:</label>
         <input
           type="text"
           name="transplanting"
           placeholder="Enter Transplanting Details..."
-          className="input"
+          style={styles.input}
           value={formData.transplanting}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="irrigationmethod">Irrigation Method:</label>
+        <label style={styles.label} htmlFor="irrigationmethod">Irrigation Method:</label>
         <select
           name="irrigationmethod"
           value={formData.irrigationmethod}
           onChange={handleInputChange}
-          className="input"
+          style={styles.select}
         >
           <option value="">Select Irrigation Method</option>
           <option value="Drip">Drip</option>
@@ -249,49 +303,49 @@ function AddFarmer() {
           <option value="Surface">Surface</option>
         </select>
 
-        <label htmlFor="gender">Gender:</label>
+        <label style={styles.label} htmlFor="gender">Gender:</label>
         <select
           name="gender"
           value={formData.gender}
           onChange={handleInputChange}
-          className="input"
+          style={styles.select}
         >
           <option value="">Select Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
-        {formErrors.gender && <span className="error">{formErrors.gender}</span>}
+        {formErrors.gender && <span style={styles.error}>{formErrors.gender}</span>}
 
-        <label htmlFor="fertilizersuse">Fertilizers Used:</label>
+        <label style={styles.label} htmlFor="fertilizersuse">Fertilizers Used:</label>
         <input
           type="text"
           name="fertilizersuse"
           placeholder="Enter Fertilizers Used..."
-          className="input"
+          style={styles.input}
           value={formData.fertilizersuse}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="dateofharvesting">Date of Harvesting:</label>
+        <label style={styles.label} htmlFor="dateofharvesting">Date of Harvesting:</label>
         <input
           type="date"
           name="dateofharvesting"
-          className="input"
+          style={styles.input}
           value={formData.dateofharvesting}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="yield">Yield:</label>
+        <label style={styles.label} htmlFor="yield">Yield:</label>
         <input
           type="text"
           name="yield"
           placeholder="Enter Yield..."
-          className="input"
+          style={styles.input}
           value={formData.yield}
           onChange={handleInputChange}
         />
 
-        <div className='marketing'>
+        <div style={styles.checkboxContainer}>
           <input
             id="agreeToTerms"
             type="checkbox"
@@ -299,15 +353,15 @@ function AddFarmer() {
             checked={formData.agreeToTerms}
             onChange={handleInputChange}
           />
-          <label htmlFor="agreeToTerms">Agree to the Terms and Conditions</label>
+          <label htmlFor="agreeToTerms" style={{ marginLeft: '8px' }}>Agree to the Terms and Conditions</label>
         </div>
-        {formErrors.agreeToTerms && <span className="error">{formErrors.agreeToTerms}</span>}
+        {formErrors.agreeToTerms && <span style={styles.error}>{formErrors.agreeToTerms}</span>}
 
-        <button className='submit' type="submit">
+        <button style={styles.submitButton} type="submit">
           Sign Up
         </button>
       </form>
-      </div>
+    </div>
   );
 }
 

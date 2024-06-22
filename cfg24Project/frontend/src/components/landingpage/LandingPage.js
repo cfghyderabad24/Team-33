@@ -56,16 +56,6 @@ const LandingPage = () => {
           Let us all make our world a better place for all to have a sustainable life.
         </p>
       </div>
-
-      <footer className="footer">
-        <div className="contact-info">
-          <h2>Address</h2>
-          <p>G1, Shah Flats, 5, 1st Street, Thillai Ganga Nagar, Nanganallur, Chennai 600061.</p>
-          <p>Email: <a href="mailto:info@iftr.org">info@iftr.org</a></p>
-          <p>Phone: <a href="tel:+919445601599">+91 94456 01599</a></p>
-          <p>&copy; 2024 IFTR. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 };
