@@ -53,7 +53,7 @@
   .footer {
     background-color: #198754;
     color: white;
-    padding: 40px 0;
+    padding: 10px 0;
   }
   
   .footer .container {
@@ -74,6 +74,5 @@
   }
   
   .footer .copyright {
-    padding: 10px 0;
     border-top: 1px solid #343a40;
     }

@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import BookSerializer, NoteSerializer,FarmerSerializer
-from .models import Book, Notes,Farmer , Farmers
+from .models import Book, Notes,Farmer , Farmers , query
 from twilio.rest import Client
 from django.conf import settings                                                                                                                                                      
 from django.http import HttpResponse
@@ -110,6 +110,25 @@ def create_record(request):
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=400)
     
+
+@api_view(['POST'])
+def create_record_query(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        query = data.get('query')  
+
+        # Create new FarmerAdmin instance
+        query_admin = query(
+            query = query,
+        )
+        query_admin.save()
+        return HttpResponse("ok",status=200)
+
+        
+
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
+ 
 
 @api_view(['GET'])
 def get_all_farmers(request):

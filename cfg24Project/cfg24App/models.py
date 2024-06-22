@@ -30,3 +30,8 @@ class Farmers(models.Model):
 
     def __str__(self):
         return self.username
+    
+class query(models.Model):
+    query = models.CharField(max_length=1000)
+    def __str__(self):
+        return self.username
