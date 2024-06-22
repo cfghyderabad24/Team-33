@@ -62,11 +62,14 @@ def broadcast_sms(request):
 def submit_data(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        name = data.get('name')
-        email = data.get('email')
+        location = data.get('location')
+        type = data.get('type')
+        crop = data.get('crop')
+        soil = data.get('soil')
+        query = data.get('query')
         # Process the data as needed
-        response_data = {'message': 'Data received successfully', 'name': name, 'email': email}
-        message_to_broadcast = (name)
+        # response_data = {'message': 'Data received successfully', 'name': name, 'email': email}
+        message_to_broadcast = (query)
         client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
         for recipient in settings.SMS_BROADCAST_TO_NUMBERS:
             print(recipient)
