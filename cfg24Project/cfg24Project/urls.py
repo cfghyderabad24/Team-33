@@ -21,7 +21,7 @@ from cfg24App.views import front ,note, note_detail, Farmer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", front, name="front"),
+    path("front/", front, name="front"),
     path("notes/", note, name="note"),
     path("notes/<int:pk>/", note_detail, name="detail"),
     path("", include('cfg24App.urls')),

@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import BookSerializer, NoteSerializer,FarmerSerializer
-from .models import Book, Notes,Farmer
+from .models import Book, Notes,Farmer , Farmers
 from twilio.rest import Client
 from django.conf import settings                                                                                                                                                      
 from django.http import HttpResponse
@@ -78,5 +78,34 @@ def submit_data(request):
                                     from_=settings.TWILIO_NUMBER,
                                     body=message_to_broadcast)
         return HttpResponse("messages sent!" + message_to_broadcast, 200)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+
+@api_view(['POST'])
+def create_record(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        name = data.get('username')
+        contact_no = data.get('phoneNumber')
+        email = data.get('emailaddress')
+        aadhar_number = data.get('aadharNumber')
+        pincode = data.get('pincode')
+        area = data.get('area')     
+
+        # Create new FarmerAdmin instance
+        farmer_admin = Farmers(
+            f_name=name,
+            contact_no=contact_no,
+            email=email,
+            aadhar_number=aadhar_number,
+            pincode=pincode,
+            area=area
+        )
+        farmer_admin.save()
+        return HttpResponse("ok",status=200)
+
+        
+
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=400)

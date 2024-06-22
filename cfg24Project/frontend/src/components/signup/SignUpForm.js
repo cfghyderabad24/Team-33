@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SignUpForm1.css';
+import axios from 'axios';
 
 function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -46,9 +47,6 @@ function SignUpForm() {
       errors.area = 'Area is required';
     }
 
-    if (!formData.cropType) {
-      errors.cropType = 'Crop Type is required';
-    }
 
     if (!formData.agreeToTerms) {
       errors.agreeToTerms = 'You must agree to the terms and conditions';
@@ -66,12 +64,17 @@ function SignUpForm() {
     });
   };
 
+  
   const handleSubmit = (e) => {
+    console.log(formData)
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Form submitted:', formData);
-      alert("Form Submitted");
-    }
+    axios.post('http://localhost:8000/create/record/', formData)
+      .then(response => {
+        console.log('Data submitted successfully', response.data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
   };
 
   return (
@@ -168,17 +171,6 @@ function SignUpForm() {
           onChange={handleInputChange}
         />
         {formErrors.area && <span className="error">{formErrors.area}</span>}
-        
-        <label>Crop Type:</label>
-        <input
-          type="text"
-          name="cropType"
-          placeholder="Enter Crop Type"
-          className="input"
-          value={formData.cropType}
-          onChange={handleInputChange}
-        />
-        {formErrors.cropType && <span className="error">{formErrors.cropType}</span>}
         
         <div className='marketing'>
           <input
