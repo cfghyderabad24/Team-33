@@ -24,4 +24,5 @@ urlpatterns = [
     path("notes/", note, name="note"),
     path("notes/<int:pk>/", note_detail, name="detail"),
     path("", include('cfg24App.urls')),
+    path('api/', include('cfg24App.urls')),
 ]

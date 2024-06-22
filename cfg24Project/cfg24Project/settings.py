@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cfg24App',
     'rest_framework',
+    'corsheaders'
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"  # Adjust with your React frontend URL
 ]
 
 MIDDLEWARE = [
@@ -52,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+       'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'cfg24Project.urls'
@@ -82,15 +89,10 @@ WSGI_APPLICATION = 'cfg24Project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'admin1',
-        'HOST': 'localhost',  # Replace with your PostgreSQL server's address if necessary
-        'PORT': '5432',          # Leave empty to use the default PostgreSQL port (usually 5432)
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
