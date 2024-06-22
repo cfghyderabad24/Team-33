@@ -12,7 +12,7 @@ function SideBar({ isCollapsed, toggleSidebar }) {
     const navigate = useNavigate();
 
     const handleNavigation = () => {
-        window.location.href = "https://www.google.com/maps/place/5,+First+St,+Nehru+Colony,+Pazhavanthangal,+Chennai,+Tamil+Nadu+600114/@12.985227,80.1839209,21z/data=!4m10!1m2!2m1!1sG1,+Shah+Flats,+5,+1st+Street,+Thillai+Ganga+Nagar,+Nanganallur,%C2%A0Chennai%C2%A0600061.!3m6!1s0x3a525e01a8badd63:0x4dabbf931600ef65!8m2!3d12.9852134!4d80.1840737!15sClJHMSwgU2hhaCBGbGF0cywgNSwgMXN0IFN0cmVldCwgVGhpbGxhaSBHYW5nYSBOYWdhciwgTmFuZ2FuYWxsdXIswqBDaGVubmFpwqA2MDAwNjEukgERY29tcG91bmRfYnVpbGRpbmfgAQA!16s%2Fg%2F11s9xk05ys?entry=ttu";
+        window.location.href = "http://localhost:8501";
     };
 
     const handleItemClick = (item) => {
@@ -32,15 +32,15 @@ function SideBar({ isCollapsed, toggleSidebar }) {
                     </li>
 
                     <li
-                        className={`menu-item ${activeItem === "/" ? "active" : ""}`}
-                        onClick={() => handleItemClick("")}
+                        className={`menu-item ${activeItem === "/all-farmers" ? "active" : ""}`}
+                        onClick={() => handleItemClick("all-farmers")}
                     >
                         <FaHome className="menu-icon" />
                         {!isCollapsed && <span className="menu-text">View All Farmers</span>}
                     </li>
                     <li
-                        className={`menu-item ${activeItem === "/all-farmers" ? "active" : ""}`}
-                        onClick={() => handleItemClick("")}
+                        className={`menu-item ${activeItem === "/add-farmer" ? "active" : ""}`}
+                        onClick={() => handleItemClick("add-farmer")}
                     >
                         <FaHome className="menu-icon" />
                         {!isCollapsed && <span className="menu-text">New Farmer Entry</span>}
@@ -56,19 +56,19 @@ function SideBar({ isCollapsed, toggleSidebar }) {
 
                     <li
                         className={`menu-item ${activeItem === "classify-farmers" ? "active" : ""}`}
-                        onClick={() => handleItemClick("products")}
+                        onClick={() => handleNavigation()}
                     >
                         <BsClipboard2Heart className="menu-icon" />
-                        {!isCollapsed && <span className="menu-text">Classify farmers</span>}
+                        {!isCollapsed && <span className="menu-text">Visualize farmers data</span>}
                     </li>
 
 
                     <li
-                        className={`menu-item ${activeItem === "crop" ? "active" : ""}`}
-                        onClick={() => handleNavigation()}
+                        className={`menu-item ${activeItem === "available" ? "active" : ""}`}
+                        onClick={() => handleItemClick("available")}
                     >
                         <FaHistory className="menu-icon" />
-                        {!isCollapsed && <span className="menu-text">Crop Availability</span>}
+                        {!isCollapsed && <span className="menu-text">Availabilities</span>}
                     </li>
                     <li
                         className={`menu-item ${activeItem === "queries" ? "active" : ""}`}
@@ -77,13 +77,7 @@ function SideBar({ isCollapsed, toggleSidebar }) {
                         <FaClock className="menu-icon" />
                         {!isCollapsed && <span className="menu-text">Address Queries</span>}
                     </li>
-                    <li
-                        className={`menu-item ${activeItem === "danger" ? "active" : ""}`}
-                        onClick={() => handleItemClick("danger")}
-                    >
-                        <FaThumbsUp className="menu-icon" />
-                        {!isCollapsed && <span className="menu-text">Danger Information</span>}
-                    </li>
+                    
                 </ul>
             </div>
         </div>

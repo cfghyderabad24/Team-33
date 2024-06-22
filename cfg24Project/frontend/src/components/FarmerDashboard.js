@@ -18,7 +18,7 @@ function FarmerDashboard() {
 
   return (
     <div>
-        
+        <Chatbot/>
       <Carousel>
         <Carousel.Item>
           <Carousel.Caption style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
