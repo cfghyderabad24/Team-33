@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import NoteSerializer
-from .models import Notes
+from .serializers import BookSerializer, NoteSerializer,FarmerSerializer
+from .models import Book, Notes,Farmer
 from twilio.rest import Client
 from django.conf import settings                                                                                                                                                      
 from django.http import HttpResponse
@@ -54,3 +54,22 @@ def broadcast_sms(request):
                                    from_=settings.TWILIO_NUMBER,
                                    body=message_to_broadcast)
     return HttpResponse("messages sent!" + message_to_broadcast, 200)
+
+# views.py
+
+from django.shortcuts import render, redirect
+from cfg24App import forms
+
+@api_view(['GET'])
+def farmers_list(request):
+    if request.method == 'GET':
+        farmers = Farmer.objects.all()
+        serializer = FarmerSerializer(farmers, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+def BookList(request):
+    if request.method == 'GET':
+        books = Book.objects.all()
+        serializer = BookSerializer(books, many=True)
+        return Response('hello')
