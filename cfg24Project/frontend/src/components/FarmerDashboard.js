@@ -66,7 +66,8 @@ function FarmerDashboard() {
         <Row className='mt-5'>
           <Col md={4}>
             <Card onClick={() => navigateTo('/weather')} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={carousel1} />
+              <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.B3Q9805ooOspoIKELMBatgHaEK?rs=1&pid=ImgDetMain" 
+            style={{ height: '230px' }}/>
               <Card.Body>
                 <Card.Title><TiWeatherPartlySunny /> Weather</Card.Title>
               </Card.Body>
@@ -76,20 +77,21 @@ function FarmerDashboard() {
           
 
           <Col md={4}>
-            <Card onClick={() => navigateTo('/availablef')} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={carousel1} />
+            <Card onClick={() => navigateTo('/weather')} style={{ cursor: 'pointer' }}>
+              <Card.Img variant="top" src="https://images.pexels.com/photos/4219151/pexels-photo-4219151.jpeg?auto=compress&cs=tinysrgb&w=600" 
+            style={{ height: '230px' }}/>
               <Card.Body>
-                <Card.Title><FaSeedling /> Availability</Card.Title>
-                
+                <Card.Title><TiWeatherPartlySunny /> Schemes</Card.Title>
               </Card.Body>
             </Card>
           </Col>
 
           <Col md={4}>
             <Card onClick={() => navigateTo('/schemes')} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={carousel1} />
+              <Card.Img variant="top" src="https://images.pexels.com/photos/6874481/pexels-photo-6874481.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"  
+              style={{ height: '230px' }}/>
               <Card.Body>
-                <Card.Title>Schemes</Card.Title>
+                <Card.Title>Availability</Card.Title>
                 
               </Card.Body>
             </Card>
@@ -99,7 +101,8 @@ function FarmerDashboard() {
         <Row className='mt-5'>
           <Col md={4}>
             <Card onClick={() => navigateTo('/query')} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={carousel1} />
+              <Card.Img variant="top" src="https://www.edwiseinternational.com/(X(1)S(zlzloxygkyw44d2jnnxiwdrw))/Images/OurServices/UL-query.jpg" 
+              style={{ height: '230px' }} />
               <Card.Body>
                 <Card.Title><HiOutlineQuestionMarkCircle /> Queries</Card.Title>
                 
@@ -109,7 +112,7 @@ function FarmerDashboard() {
 
           <Col md={4}>
             <Card onClick={() => navigateTo('/report')} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={carousel1} />
+              <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.k8FUKCiuicKLPRO-uLBRcgHaE8?rs=1&pid=ImgDetMain" style={{ height: '230px' }}/>
               <Card.Body>
                 <Card.Title><TbReportAnalytics /> My Report</Card.Title>
                 
@@ -122,8 +125,8 @@ function FarmerDashboard() {
           
 
           <Col md={4}>
-            <Card onClick={() => navigateTo('/msp')} style={{ cursor: 'pointer' }}>
-              <Card.Img variant="top" src={carousel1} />
+            <Card onClick={() => window.location.href ="https://desagri.gov.in/statistics-type/latest-minimum-support-price-msp-statement/d"} style={{ cursor: 'pointer' }}>
+              <Card.Img variant="top" src="https://cdn5.newsnationtv.com/images/2020/12/14/msp-01-22.jpg "  style={{ height: '230px' }}/>
               <Card.Body>
                 <Card.Title><SiBitcoinsv /> MSP</Card.Title>
                 
