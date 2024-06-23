@@ -115,11 +115,12 @@ def create_record(request):
 def create_record_query(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        query = data.get('query')  
+        query1 = data.get('inputValue')  
+        # console.log(query1)
 
         # Create new FarmerAdmin instance
         query_admin = query(
-            query = query,
+            query = query1
         )
         query_admin.save()
         return HttpResponse("ok",status=200)

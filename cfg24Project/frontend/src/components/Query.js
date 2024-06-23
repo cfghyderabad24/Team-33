@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 function Query() {
   const [inputValue, setInputValue] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleSubmit = () => {
-    alert(`Submitted: ${inputValue}`);
+  const handleSubmit = (e) => {
+    console.log(inputValue)
+    e.preventDefault();
+    axios.post('http://localhost:8000/query/',{inputValue: inputValue})
+      .then(response => {
+        console.log('Data submitted successfully', response.data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
   };
 
   const handleFileChange = (event) => {
