@@ -1,0 +1,7 @@
+django
+pillow
+python3
+mysqlclient
+virtualenv
+djangorestframework
+

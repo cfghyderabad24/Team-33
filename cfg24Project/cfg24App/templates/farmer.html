@@ -1,0 +1,16 @@
+<!-- farmer.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Form</title>
+</head>
+<body>
+    <h2>Farmer Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
