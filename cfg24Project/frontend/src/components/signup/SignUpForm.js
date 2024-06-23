@@ -1,56 +1,61 @@
-import React, { useState } from 'react';
-import './SignUpForm1.css';
-import axios from 'axios';
+import React, { useState } from "react";
+import "./SignUpForm1.css";
+import axios from "axios";
+import usenavigate, { useNavigate } from "react-router-dom"
+
+
 
 function SignUpForm() {
+
+  let navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    phoneNumber: '',
-    emailaddress: '',
-    aadharNumber: '',
-    pincode: '',
-    area: '',
-    cropType: '',
+    username: "",
+    phoneNumber: "",
+    emailaddress: "",
+    aadharNumber: "",
+    pincode: "",
+    area: "",
+    cropType: "",
     agreeToTerms: false,
-    userType: '',
+    userType: "",
   });
 
   const [formErrors, setFormErrors] = useState({});
 
+  
   const validateForm = () => {
     const errors = {};
-    
+
     if (!formData.username) {
-      errors.username = 'Username is required';
+      errors.username = "Username is required";
     }
 
     const phonePattern = /^[0-9]{10}$/;
     if (!formData.phoneNumber.match(phonePattern)) {
-      errors.phoneNumber = 'Enter a valid 10-digit phone number';
+      errors.phoneNumber = "Enter a valid 10-digit phone number";
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.emailaddress.match(emailPattern)) {
-      errors.emailaddress = 'Enter a valid email address';
+      errors.emailaddress = "Enter a valid email address";
     }
 
     const aadharPattern = /^[0-9]{12}$/;
     if (!formData.aadharNumber.match(aadharPattern)) {
-      errors.aadharNumber = 'Enter a valid 12-digit Aadhar number';
+      errors.aadharNumber = "Enter a valid 12-digit Aadhar number";
     }
 
     const pincodePattern = /^[0-9]{6}$/;
     if (!formData.pincode.match(pincodePattern)) {
-      errors.pincode = 'Enter a valid 6-digit Pincode';
+      errors.pincode = "Enter a valid 6-digit Pincode";
     }
 
     if (!formData.area) {
-      errors.area = 'Area is required';
+      errors.area = "Area is required";
     }
 
-
     if (!formData.agreeToTerms) {
-      errors.agreeToTerms = 'You must agree to the terms and conditions';
+      errors.agreeToTerms = "You must agree to the terms and conditions";
     }
 
     setFormErrors(errors);
@@ -61,85 +66,96 @@ function SignUpForm() {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
-  
   const handleSubmit = (e) => {
-    console.log(formData)
+    console.log(formData);
     e.preventDefault();
-    axios.post('http://localhost:8000/create/record/', formData)
-      .then(response => {
-        console.log('Data submitted successfully', response.data);
+    axios
+      .post("http://localhost:8000/create/record/", formData)
+      .then((response) => {
+        console.log("Data submitted successfully", response.data);
       })
-      .catch(error => {
-        console.error('There was an error!', error);
+      .catch((error) => {
+        console.error("There was an error!", error);
       });
+
+      if (formData.userType === "admin") {
+        navigate("/admin");
+      } else if (formData.userType === "farmer") {
+        navigate("/farmerDashboard");
+      } else {
+        navigate("/farmerDashboard");
+      }
+    
   };
   const styles = {
     container: {
-      maxWidth: '600px',
-      margin: 'auto',
-      padding: '20px',
-      borderRadius: '8px',
-      backgroundColor: '#f5f5f5',
-      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+      maxWidth: "600px",
+      margin: "auto",
+      padding: "20px",
+      borderRadius: "8px",
+      backgroundColor: "#f5f5f5",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     },
     form: {
-      display: 'flex',
-      flexDirection: 'column',
+      display: "flex",
+      flexDirection: "column",
     },
     input: {
-      padding: '10px',
-      margin: '10px 0',
-      borderRadius: '4px',
-      border: '1px solid #ccc',
-      fontSize: '16px',
+      padding: "10px",
+      margin: "10px 0",
+      borderRadius: "4px",
+      border: "1px solid #ccc",
+      fontSize: "16px",
     },
     select: {
-      padding: '10px',
-      margin: '10px 0',
-      borderRadius: '4px',
-      border: '1px solid #ccc',
-      fontSize: '16px',
+      padding: "10px",
+      margin: "10px 0",
+      borderRadius: "4px",
+      border: "1px solid #ccc",
+      fontSize: "16px",
     },
     label: {
-      margin: '10px 0 5px',
-      fontSize: '16px',
-      fontWeight: 'bold',
+      margin: "10px 0 5px",
+      fontSize: "16px",
+      fontWeight: "bold",
     },
     error: {
-      color: 'red',
-      fontSize: '14px',
+      color: "red",
+      fontSize: "14px",
     },
     checkboxContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      margin: '10px 0',
+      display: "flex",
+      alignItems: "center",
+      margin: "10px 0",
     },
     submitButton: {
-      padding: '10px',
-      margin: '20px 0',
-      borderRadius: '4px',
-      border: 'none',
-      backgroundColor: '#28a745',
-      color: 'white',
-      fontSize: '18px',
-      cursor: 'pointer',
+      padding: "10px",
+      margin: "20px 0",
+      borderRadius: "4px",
+      border: "none",
+      backgroundColor: "#28a745",
+      color: "white",
+      fontSize: "18px",
+      cursor: "pointer",
     },
     title: {
-      textAlign: 'center',
-      marginBottom: '20px',
-      color: '#333',
+      textAlign: "center",
+      marginBottom: "20px",
+      color: "#333",
     },
     radioGroup: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      margin: '10px 0',
+      display: "flex",
+      justifyContent: "space-between",
+      margin: "10px 0",
     },
   };
-  
+
+ 
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Sign Up</h1>
@@ -150,7 +166,7 @@ function SignUpForm() {
               type="radio"
               name="userType"
               value="Farmer"
-              checked={formData.userType === 'Farmer'}
+              checked={formData.userType === "Farmer"}
               onChange={handleInputChange}
             />
             Farmer
@@ -160,13 +176,15 @@ function SignUpForm() {
               type="radio"
               name="userType"
               value="Admin"
-              checked={formData.userType === 'Admin'}
+              checked={formData.userType === "Admin"}
               onChange={handleInputChange}
             />
             Admin
           </label>
         </div>
-        <label style={styles.label} htmlFor="username">UserName:</label>
+        <label style={styles.label} htmlFor="username">
+          UserName:
+        </label>
         <input
           type="text"
           name="username"
@@ -175,9 +193,13 @@ function SignUpForm() {
           value={formData.username}
           onChange={handleInputChange}
         />
-        {formErrors.username && <span style={styles.error}>{formErrors.username}</span>}
+        {formErrors.username && (
+          <span style={styles.error}>{formErrors.username}</span>
+        )}
 
-        <label style={styles.label} htmlFor="phoneNumber">Contact No:</label>
+        <label style={styles.label} htmlFor="phoneNumber">
+          Contact No:
+        </label>
         <input
           type="tel"
           name="phoneNumber"
@@ -186,9 +208,13 @@ function SignUpForm() {
           value={formData.phoneNumber}
           onChange={handleInputChange}
         />
-        {formErrors.phoneNumber && <span style={styles.error}>{formErrors.phoneNumber}</span>}
+        {formErrors.phoneNumber && (
+          <span style={styles.error}>{formErrors.phoneNumber}</span>
+        )}
 
-        <label style={styles.label} htmlFor="emailaddress">Email:</label>
+        <label style={styles.label} htmlFor="emailaddress">
+          Email:
+        </label>
         <input
           type="text"
           name="emailaddress"
@@ -197,9 +223,13 @@ function SignUpForm() {
           value={formData.emailaddress}
           onChange={handleInputChange}
         />
-        {formErrors.emailaddress && <span style={styles.error}>{formErrors.emailaddress}</span>}
+        {formErrors.emailaddress && (
+          <span style={styles.error}>{formErrors.emailaddress}</span>
+        )}
 
-        <label style={styles.label} htmlFor="aadharNumber">Aadhar Number:</label>
+        <label style={styles.label} htmlFor="aadharNumber">
+          Aadhar Number:
+        </label>
         <input
           type="text"
           name="aadharNumber"
@@ -208,9 +238,13 @@ function SignUpForm() {
           value={formData.aadharNumber}
           onChange={handleInputChange}
         />
-        {formErrors.aadharNumber && <span style={styles.error}>{formErrors.aadharNumber}</span>}
+        {formErrors.aadharNumber && (
+          <span style={styles.error}>{formErrors.aadharNumber}</span>
+        )}
 
-        <label style={styles.label} htmlFor="pincode">Pincode:</label>
+        <label style={styles.label} htmlFor="pincode">
+          Pincode:
+        </label>
         <input
           type="text"
           name="pincode"
@@ -219,9 +253,13 @@ function SignUpForm() {
           value={formData.pincode}
           onChange={handleInputChange}
         />
-        {formErrors.pincode && <span style={styles.error}>{formErrors.pincode}</span>}
+        {formErrors.pincode && (
+          <span style={styles.error}>{formErrors.pincode}</span>
+        )}
 
-        <label style={styles.label} htmlFor="area">Area:</label>
+        <label style={styles.label} htmlFor="area">
+          Area:
+        </label>
         <input
           type="text"
           name="area"
@@ -231,8 +269,8 @@ function SignUpForm() {
           onChange={handleInputChange}
         />
         {formErrors.area && <span className="error">{formErrors.area}</span>}
-        
-        <div className='marketing'>
+
+        <div className="marketing">
           <input
             id="agreeToTerms"
             type="checkbox"
@@ -240,9 +278,13 @@ function SignUpForm() {
             checked={formData.agreeToTerms}
             onChange={handleInputChange}
           />
-          <label htmlFor="agreeToTerms" style={{ marginLeft: '8px' }}>Agree to the Terms and Conditions</label>
+          <label htmlFor="agreeToTerms" style={{ marginLeft: "8px" }}>
+            Agree to the Terms and Conditions
+          </label>
         </div>
-        {formErrors.agreeToTerms && <span style={styles.error}>{formErrors.agreeToTerms}</span>}
+        {formErrors.agreeToTerms && (
+          <span style={styles.error}>{formErrors.agreeToTerms}</span>
+        )}
 
         <button style={styles.submitButton} type="submit">
           Sign Up
